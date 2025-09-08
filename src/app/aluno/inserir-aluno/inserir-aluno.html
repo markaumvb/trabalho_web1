@@ -1,0 +1,104 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-center">Editar Aluno / {{ aluno.nome }}</h2>
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form #formAluno="ngForm">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                name="nome"
+                placeholder="Nome"
+                minlength="2"
+                required
+                [(ngModel)]="aluno.nome"
+                #nome="ngModel"
+              />
+              <div class="alert alert-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
+                <div [hidden]="!nome.errors['required']">Digite o nome da pessoa</div>
+                <div [hidden]="!nome.errors['minlength']">
+                  O nome deve ter no mínimo 2 caracteres
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cpf">CPF</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cpf"
+                name="cpf"
+                [(ngModel)]="aluno.cpf"
+                #cpf="ngModel"
+                required
+                minlength="11"
+              />
+              <div class="alert alert-danger" *ngIf="cpf.errors && (cpf.dirty || cpf.touched)">
+                <div [hidden]="!cpf.errors['required']">Digite o cpf do aluno</div>
+                <div [hidden]="!cpf.errors['maxlength']">
+                  O CPF deve ter no mínimo 11 caracteres
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">e-mail(@ufpr.br)</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="aluno.email"
+                #email="ngModel"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="email.errors && (email.dirty || email.touched)"
+              >
+                <div [hidden]="!email.errors['required']">Digite o email do aluno</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="datanascimento">Data de Nascimento</label>
+              <input
+                type="date"
+                class="form-control"
+                id="datanascimento"
+                name="datanascimento"
+                required
+                [(ngModel)]="aluno.datanascimento"
+                #datanascimento="ngModel"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="datanascimento.errors && (datanascimento.dirty || datanascimento.touched)"
+              >
+                <div [hidden]="!datanascimento.errors['required']">
+                  Digite a data de nascimento da pessoa
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                (click)="inserir()"
+                [disabled]="formAluno.form.invalid"
+                [routerLink]="['/alunos']"
+              >
+                <i class="fa fa-save aria-hidden=true"></i>Salvar
+              </button>
+              <a class="btn btn-secondary" [routerLink]="['/alunos']">
+                <i class="fa fa-arrow-left aria-hidden=true"></i>Voltar
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
