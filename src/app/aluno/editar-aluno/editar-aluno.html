@@ -19,7 +19,7 @@
                 #nome="ngModel"
               />
               <div class="alert alert-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
-                <div [hidden]="!nome.errors['required']">Digite o nome da pessoa</div>
+                <div [hidden]="!nome.errors['required']">Digite o nome do aluno</div>
                 <div [hidden]="!nome.errors['minlength']">
                   O nome deve ter no mínimo 2 caracteres
                 </div>
@@ -82,7 +82,7 @@
                 *ngIf="datanascimento.errors && (datanascimento.dirty || datanascimento.touched)"
               >
                 <div [hidden]="!datanascimento.errors['required']">
-                  Digite a data de nascimento da pessoa
+                  Digite a data de nascimento do aluno
                 </div>
               </div>
             </div>
