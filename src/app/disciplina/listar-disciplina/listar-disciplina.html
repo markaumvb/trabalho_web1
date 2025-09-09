@@ -1,48 +1,46 @@
-<h2>Relação de Disciplinas</h2>
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>link</th>
-      <th class="text-center">
-        <a
-          [routerLink]="['/disciplinas/novo']"
-          title="Novo"
-          alt="Novo"
-          class="btn btn-xs btn-primary"
-        >
-          <i class="fa fa-plus" aria-hidden="true"></i>Novo
-        </a>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let disciplina of disciplinas">
-      <td>{{ disciplina.nome }}</td>
-      <td>
-        <a [href]="'https://' + disciplina.link" target="_blank">{{ disciplina.link }}</a>
-      </td>
-      <td class="text-center" style="width: 300px">
-        <a
-          href="#"
-          title="Editar"
-          alt="Editar"
-          class="btn btn-xs btn-warning"
-          [routerLink]="['/disciplinas/novo', disciplina.id]"
-        >
-          <i class="fa fa-pencil" aria-hidden="true"></i>Editar</a
-        >
-        <a
-          href="#"
-          title="Excluir"
-          alt="Excluir"
-          class="btn btn-xs btn-danger"
-          (click)="remover($event, disciplina)"
-        >
-          <i class="fa fa-times" aria-hidden="true"></i>Excluir
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p *ngIf="disciplinas.length === 0">Nenhum registro encontrado!</p>
+<div class="container mt-4">
+  <h2 class="mb-4 text-primary">📚 Relação de Disciplinas</h2>
+
+  <table class="table table-striped table-bordered table-hover align-middle shadow-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>Nome</th>
+        <th>Link</th>
+        <th class="text-center" style="width: 200px">
+          <a [routerLink]="['/disciplinas/novo']" title="Novo" class="btn btn-sm btn-success">
+            <i class="fa fa-plus" aria-hidden="true"></i> Novo
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let disciplina of disciplinas">
+        <td>{{ disciplina.nome }}</td>
+        <td>
+          <a [href]="'https://' + disciplina.link" target="_blank">
+            {{ disciplina.link }}
+          </a>
+        </td>
+        <td class="text-center">
+          <a
+            class="btn btn-sm btn-warning me-2"
+            [routerLink]="['/disciplinas/novo', disciplina.id]"
+            title="Editar"
+          >
+            <i class="fa fa-pencil"></i> Editar
+          </a>
+          <a class="btn btn-sm btn-danger" (click)="remover($event, disciplina)" title="Excluir">
+            <i class="fa fa-times"></i> Excluir
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p
+    *ngIf="disciplinas.length === 0"
+    class="text-center bg-secondary text-white p-3 rounded shadow-sm"
+  >
+    Nenhum registro encontrado!
+  </p>
+</div>
