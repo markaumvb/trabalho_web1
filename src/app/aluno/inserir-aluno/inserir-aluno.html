@@ -54,12 +54,14 @@
                 [(ngModel)]="aluno.email"
                 #email="ngModel"
                 required
+                email
               />
               <div
                 class="alert alert-danger"
                 *ngIf="email.errors && (email.dirty || email.touched)"
               >
                 <div [hidden]="!email.errors['required']">Digite o email do aluno</div>
+                <div [hidden]="!email.errors['email']">Digite um email válido</div>
               </div>
             </div>
             <div class="form-group">
@@ -72,7 +74,12 @@
                 required
                 [(ngModel)]="aluno.datanascimento"
                 #datanascimento="ngModel"
+                [max]="dataMaxima"
               />
+              <small class="form-text text-muted">
+                <i class="fa fa-info-circle"></i>
+                A data não pode ser superior à data atual ({{ dataMaxima | date : 'dd/MM/yyyy' }})
+              </small>
               <div
                 class="alert alert-danger"
                 *ngIf="datanascimento.errors && (datanascimento.dirty || datanascimento.touched)"

@@ -13,7 +13,11 @@ import { Router } from '@angular/router';
 export class InserirAluno {
   @ViewChild('formAluno') formAluno!: NgForm;
   aluno: Aluno = new Aluno();
-  constructor(private alunoService: AlunoService, private router: Router) {}
+  dataMaxima: string;
+  constructor(private alunoService: AlunoService, private router: Router) {
+    const datahoje = new Date();
+    this.dataMaxima = datahoje.toISOString().split('T')[0];
+  }
 
   inserir() {
     if (this.formAluno.form.valid) {
