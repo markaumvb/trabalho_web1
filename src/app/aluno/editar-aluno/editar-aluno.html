@@ -38,6 +38,10 @@
                 minlength="11"
                 maxlength="11"
               />
+              <small class="form-text text-muted">
+                <i class="fa fa-info-circle"></i>
+                Apenas números
+              </small>
               <div class="alert alert-danger" *ngIf="cpf.errors && (cpf.dirty || cpf.touched)">
                 <div [hidden]="!cpf.errors['required']">Digite o cpf do aluno</div>
                 <div [hidden]="!cpf.errors['minlength']">
