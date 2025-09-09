@@ -20,7 +20,7 @@
     <tr *ngFor="let disciplina of disciplinas">
       <td>{{ disciplina.nome }}</td>
       <td>
-        <a [href]="disciplina.link" target="_blank">{{ disciplina.link }}</a>
+        <a [href]="'https://' + disciplina.link" target="_blank">{{ disciplina.link }}</a>
       </td>
       <td class="text-center" style="width: 300px">
         <a
