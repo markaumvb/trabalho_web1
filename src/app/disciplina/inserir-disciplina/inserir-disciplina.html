@@ -12,28 +12,36 @@
                 class="form-control"
                 id="nome"
                 name="nome"
-                placeholder="Nome"
+                placeholder="Nome da disciplina"
                 minlength="2"
                 required
                 [(ngModel)]="disciplina.nome"
                 #nome="ngModel"
               />
               <small class="text-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
-                <span *ngIf="nome.errors['required']">Digite o nome da pessoa</span>
+                <span *ngIf="nome.errors['required']">Digite o nome da disciplina</span>
                 <span *ngIf="nome.errors['minlength']">O nome deve ter no mínimo 2 caracteres</span>
               </small>
             </div>
             <div class="mb-3">
               <label for="link" class="form-label">Link</label>
-              <input
-                type="text"
-                class="form-control"
-                id="link"
-                name="link"
-                [(ngModel)]="disciplina.link"
-                #link="ngModel"
-                required
-              />
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="link">https://</span>
+                </div>
+                <input
+                  type="text"
+                  id="link"
+                  name="link"
+                  [(ngModel)]="disciplina.link"
+                  #link="ngModel"
+                  class="form-control"
+                  id="basic-url"
+                  aria-describedby="link"
+                />
+              </div>
+
               <small class="text-danger" *ngIf="link.errors && (link.dirty || link.touched)">
                 <span *ngIf="link.errors['required']">Digite o link da disciplina</span>
               </small>
